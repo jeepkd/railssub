@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'pages/home'
+  resources :accounts
+
+  constraints(subdomain: /.+/) do
+    # root to: 'accounts#show'
+    get '/', to: 'accounts#show'
+  end
+  root to: 'pages#home'
+
 end
